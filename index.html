@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col col-lg-4"></div>
+                <div class="col col-lg-4">
+                    <h1 class="" style="background-color: rgb(4, 4, 120);color: White;text-align: center;">
+                        User Autheticates
+                    </h1>
+                </div>
+                <div class="col col-lg-4"></div>
+            </div>
+            <div class="row mt-5">
+                <div class="col col-lg-4"></div>
+                <div class="col col-lg-4">
+                    <h1 class=""
+                        style="padding: 10px;background-color: rgb(0, 90, 159);color: White;text-align: center;">
+                        <button class="control-form" onclick="fblogin()"
+                            style="width: 100%;border: 0px solid;background-color: rgb(0, 90, 159);color: White;text-align: center;">
+                            Facebook Login
+                        </button>
+
+                    </h1>
+                </div>
+                <div class="col col-lg-4"></div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
+<script>
+
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyA2rPzyKAwGPhtkSiCOewaIP79axf4fC38",
+        authDomain: "enstro-68247.firebaseapp.com",
+        databaseURL: "https://enstro-68247-default-rtdb.firebaseio.com",
+        projectId: "enstro-68247",
+        storageBucket: "enstro-68247.appspot.com",
+        messagingSenderId: "904641560773",
+        appId: "1:904641560773:web:f0d6dceb3bba315e5630ac",
+        measurementId: "G-KYQ2X9XP8P"
+    };
+
+    // const app = initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
+
+ function fblogin(){
+    
+
+console.log("call")
+  var provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+      
+      var user = result.user;
+      console.log(user)
+      console.log("user login====>",user.displayName)
+    //   document.getElementById('log').setAttribute('style','display:none')
+    //   document.getElementById('dlogin').removeAttribute('style')
+    //   document.getElementById('img').src=user.photoURL
+    //   document.getElementById('user').innerText =`User Name : ${user.displayName}`
+    //   document.getElementById('email').innerText =`User Email : ${user.email}`
+    
+      
+    }).catch(function(error) {
+  
+      var errorMessage = error.message;
+      console.log('Error Message',errorMessage)
+    //   document.getElementById('dlogin').setAttribute('style','display:none')
+    //   document.getElementById('log').removeAttribute('style')
+
+     
+      
+    });
+}
+</script>
+<script>
+   
+
+
+
+
+</script>
+
+</html>
